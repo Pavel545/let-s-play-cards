@@ -1,10 +1,18 @@
 .main {
   width: 1024px;
   height: 774px;
-  color: #004980;
+  background: #004980;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .complexity {
@@ -25,5 +33,47 @@
   -webkit-font-feature-settings: 'pnum' on, 'lnum' on;
           font-feature-settings: 'pnum' on, 'lnum' on;
   color: #004980;
+}
+
+.complexity_button {
+  position: absolute;
+  width: 246px;
+  height: 50px;
+  left: 389px;
+  top: 519px;
+  background: #7AC100;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.complexity_choice_area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.complexity_choice_area:not(:checked) > input {
+  display: none;
+}
+
+.complexity_choice_area:not(:checked) > button {
+  font-family: 'StratosSkyeng';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  color: #0080C1;
 }
 /*# sourceMappingURL=style.css.map */

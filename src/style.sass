@@ -1,22 +1,56 @@
 .main
     width: 1024px
     height: 774px
-    color: #004980
+    background: #004980
     display: flex
+    align-content: center
+    align-items: center
+    justify-content: center
 
 .complexity
     color: C2F5FF
     width: 480px
     height: 459px
-    background: #C2F5FF;
-    border-radius: 12px;
+    background: #C2F5FF
+    border-radius: 12px
+
     &_text
-        font-family: 'StratosSkyeng';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 40px;
-        line-height: 48px;
-        text-align: center;
-        font-feature-settings: 'pnum' on, 'lnum' on;
-        color: #004980;
+        font-family: 'StratosSkyeng'
+        font-style: normal
+        font-weight: 400
+        font-size: 40px
+        line-height: 48px
+        text-align: center
+        font-feature-settings: 'pnum' on, 'lnum' on
+        color: #004980
+    &_button
+        position: absolute
+        width: 246px
+        height: 50px
+        left: 389px
+        top: 519px
+        background: #7AC100
+        border-radius: 12px
+        color: #fff
+
+.complexity_choice_area
+    display: flex
+    justify-content: space-around
+    align-items: center
+
+    &:not(:checked) > input
+        display: none
+    &:not(:checked) > button
+        font-family: 'StratosSkyeng'
+        font-style: normal
+        font-weight: 400
+        font-size: 64px
+        line-height: 72px
+        display: flex
+        align-items: center
+        text-align: center
+        color: #0080C1
+
+    // &> input:checked ~ button
+    //     color: #7AC100
 
