@@ -1,0 +1,29 @@
+.main {
+  width: 1024px;
+  height: 774px;
+  color: #004980;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.complexity {
+  color: C2F5FF;
+  width: 480px;
+  height: 459px;
+  background: #C2F5FF;
+  border-radius: 12px;
+}
+
+.complexity_text {
+  font-family: 'StratosSkyeng';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  text-align: center;
+  -webkit-font-feature-settings: 'pnum' on, 'lnum' on;
+          font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #004980;
+}
+/*# sourceMappingURL=style.css.map */
