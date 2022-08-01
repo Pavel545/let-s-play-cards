@@ -1,18 +1,15 @@
 .main {
-  width: 1024px;
   height: 774px;
   background: #004980;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .complexity {
@@ -21,9 +18,21 @@
   height: 459px;
   background: #C2F5FF;
   border-radius: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .complexity_text {
+  width: 208px;
+  left: 408px;
   font-family: 'StratosSkyeng';
   font-style: normal;
   font-weight: 400;
@@ -36,11 +45,8 @@
 }
 
 .complexity_button {
-  position: absolute;
   width: 246px;
   height: 50px;
-  left: 389px;
-  top: 519px;
   background: #7AC100;
   border-radius: 12px;
   color: #fff;
@@ -50,11 +56,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  gap: 24px;
+  padding-bottom: 67px;
 }
 
 .complexity_choice_area:not(:checked) > input {
@@ -67,13 +70,10 @@
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
   color: #0080C1;
+  background: #FFFFFF;
+  border-radius: 12px;
+  width: 98px;
+  height: 98px;
 }
 /*# sourceMappingURL=style.css.map */
