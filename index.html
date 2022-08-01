@@ -8,23 +8,8 @@
     <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
-    <main class='add'>
-        
-        <!-- <main class="main">
-            <div class="complexity">
-                <div class="complexity_text">
-                    <p >Выбери сложность</p>
-                </div>
-                <div class='complexity_choice_area'>
-                    <div id="easy" class="complexity_choice_button" >1</div>
-                    <div id="average" class="complexity_choice_button">2</div>
-                    <div id="difficult" class="complexity_choice_button">3</div>
-                </div>
-                <button class="complexity_button">Старт</button>>
-                
-                
-            </div>
-        </main> -->
+    <main class='app'>
+
     </main>
     <script>
         window.complexity=""
@@ -34,15 +19,15 @@
         renderScreen: function (screenName) {
             window.application.screens[screenName]()
         },
-        renderBlock: function (blockName, container, cls, content) {
-            window.application.blocks[blockName](container, cls, content);
+        renderBlock: function (blockName, container, cls, content, attrs) {
+            window.application.blocks[blockName](container, cls, content,attrs);
         },
         timers: [],
       };
     </script>
-    <script src="/src/js/template.js"></script>
-    <script src="/src/js/request.js"></script>
-    <script src="/src/js/file1.js"></script>
-    <script src="/src/js/file2.js"></script>
+    <script src="./src/js/template.js"></script>
+    <script src="./src/js/request.js"></script>
+    <script src="./src/js/file1.js"></script>
+    <script src="./src/js/file2.js"></script>
 </body>
 </html>
