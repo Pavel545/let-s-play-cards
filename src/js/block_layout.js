@@ -52,5 +52,6 @@ window.application.screens["example"] = renderExampleScreenStart;
 function renderExampleScreenGame() {
     const app = document.querySelector(".app");
     app.innerHTML = "";
+    
   }
 window.application.screens["game"] = renderExampleScreenGame;
