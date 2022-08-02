@@ -1,14 +1,14 @@
 function renderExampleDiv(container, cls, content) {
-    let main = {
+    const div = {
       tag: "div",
       cls: `${cls}`,
       content: `${content}`,
     };
-    container.appendChild(templateEngine(main));
+    container.appendChild(templateEngine(div));
 }
 window.application.blocks["example-div"] = renderExampleDiv;
 function renderExampleButtonFalse(container, cls, content,id) {
-    let main = {
+    const div = {
       tag: "div",
       cls: `${cls}`,
       content: `${content}`,
@@ -16,16 +16,16 @@ function renderExampleButtonFalse(container, cls, content,id) {
         id : id,
       }
     };
-    container.appendChild(templateEngine(main));
+    container.appendChild(templateEngine(div));
 }
 window.application.blocks["example-false"] = renderExampleButtonFalse;
 function renderExampleButton(container, cls, content) {
-    let main = {
+    const button = {
       tag: "button",
       cls: `${cls}`,
       content: `${content}`,
     };
-    container.appendChild(templateEngine(main));
+    container.appendChild(templateEngine(button));
 }
 window.application.blocks["example-button"] = renderExampleButton;
 
