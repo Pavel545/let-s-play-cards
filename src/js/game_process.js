@@ -16,10 +16,10 @@ start.addEventListener('click',()=>{
         alert('Пожалуста, выберите сложность');
         return;
     }
-    beginningGame();
+    startGame();
 
 });
-function beginningGame() {
+function startGame() {
     
     window.application.renderScreen("game");
     

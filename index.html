@@ -11,20 +11,7 @@
     <main class='app'>
 
     </main>
-    <script>
-        window.complexity=""
-        window.application = {
-        blocks: {},
-        screens: {},
-        renderScreen: function (screenName) {
-            window.application.screens[screenName]()
-        },
-        renderBlock: function (blockName, container, cls, content, attrs) {
-            window.application.blocks[blockName](container, cls, content,attrs);
-        },
-        timers: [],
-      };
-    </script>
+    <script src="./src/js/application.js"></script>
     <script src="./src/js/template.js"></script>
     <script src="./src/js/request.js"></script>
     <script src="./src/js/block_layout.js"></script>
