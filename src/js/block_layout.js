@@ -7,7 +7,7 @@ function renderExampleDiv(container, cls, content) {
   container.appendChild(templateEngine(div));
 }
 window.application.blocks["example-div"] = renderExampleDiv;
-function renderExampleButtonFalse(container, { cls, content, id }) {
+function renderExampleButtonFalse({ container, cls, content, id }) {
   const div = {
     tag: "div",
     cls: `${cls}`,
@@ -19,7 +19,7 @@ function renderExampleButtonFalse(container, { cls, content, id }) {
   container.appendChild(templateEngine(div));
 }
 window.application.blocks["example-false"] = renderExampleButtonFalse;
-function renderExampleButton(container, cls, content) {
+function renderExampleButton({ container, cls, content }) {
   const button = {
     tag: "button",
     cls: `${cls}`,
@@ -37,42 +37,42 @@ function renderExampleScreenStart() {
   window.application.renderBlock("example-div", main, "complexity", "");
 
   const div = main.querySelector(".complexity");
-  window.application.renderBlock(
-    "example-div",
-    div,
-    "complexity_text",
-    "Выбери сложность"
-  );
-  window.application.renderBlock(
-    "example-div",
-    div,
-    "complexity_choice_area",
-    ""
-  );
+  window.application.renderBlock("example-div", {
+    containeer: div,
+    cls: "complexity_text",
+    content: "Выбери сложность",
+  });
+  window.application.renderBlock("example-div", {
+    containeer: div,
+    cls: "complexity_choice_area",
+    content: "",
+  });
 
   const complexity_choice_area = div.querySelector(".complexity_choice_area");
-  window.application.renderBlock("example-false", complexity_choice_area, {
+  window.application.renderBlock("example-false", {
+    container: complexity_choice_area,
     classes: ["complexity_choice_button"],
     content: "1",
     dataAttrs: ["easy"],
   });
-  window.application.renderBlock("example-false", complexity_choice_area, {
+  window.application.renderBlock("example-false", {
+    container: complexity_choice_area,
     classes: ["complexity_choice_button"],
     content: "2",
     dataAttrs: ["average"],
   });
-  window.application.renderBlock("example-false", complexity_choice_area, {
+  window.application.renderBlock("example-false", {
+    container: complexity_choice_area,
     classes: ["complexity_choice_button"],
     content: "3",
     dataAttrs: ["difficult"],
   });
 
-  window.application.renderBlock(
-    "example-button",
-    div,
-    "complexity_button",
-    "Старт"
-  );
+  window.application.renderBlock("example-button", {
+    container: div,
+    cls: "complexity_button",
+    content: "Старт",
+  });
 }
 window.application.screens["example"] = renderExampleScreenStart;
 
