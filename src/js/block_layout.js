@@ -1,4 +1,4 @@
-function renderExampleDiv(container, cls, content) {
+function renderExampleDiv({container, cls, content}) {
   const div = {
     tag: "div",
     cls: `${cls}`,
@@ -32,18 +32,18 @@ window.application.blocks["example-button"] = renderExampleButton;
 function renderExampleScreenStart() {
   const app = document.querySelector(".app");
 
-  window.application.renderBlock("example-div", app, "main", "");
+  window.application.renderBlock("example-div", {container:app, cls:"main", content:""});
   const main = app.querySelector(".main");
-  window.application.renderBlock("example-div", main, "complexity", "");
+  window.application.renderBlock("example-div", {container:main, cls:"complexity", content:""});
 
   const div = main.querySelector(".complexity");
   window.application.renderBlock("example-div", {
-    containeer: div,
+    container: div,
     cls: "complexity_text",
     content: "Выбери сложность",
   });
   window.application.renderBlock("example-div", {
-    containeer: div,
+    container: div,
     cls: "complexity_choice_area",
     content: "",
   });
