@@ -60,11 +60,7 @@
   padding-bottom: 67px;
 }
 
-.complexity_choice_area:not(:checked) > input {
-  display: none;
-}
-
-.complexity_choice_area:not(:checked) > button {
+.complexity_choice_area:not(:checked) > div {
   font-family: 'StratosSkyeng';
   font-style: normal;
   font-weight: 400;
@@ -75,5 +71,26 @@
   border-radius: 12px;
   width: 98px;
   height: 98px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+.complexity_choice_area:not(:checked) > div:hover {
+  color: #7AC100;
+  text-shadow: 1px 1px #7AC100;
+}
+
+.complexity_choice_area:not(:checked) > div:checked {
+  background: #7AC100;
+  text-shadow: 1px 1px #7AC100;
 }
 /*# sourceMappingURL=style.css.map */
