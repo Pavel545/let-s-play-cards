@@ -1,4 +1,4 @@
-function renderExampleDiv({container, cls, content}) {
+function renderExampleDiv({ container, cls, content }) {
   const div = {
     tag: "div",
     cls: `${cls}`,
@@ -32,9 +32,17 @@ window.application.blocks["example-button"] = renderExampleButton;
 function renderExampleScreenStart() {
   const app = document.querySelector(".app");
 
-  window.application.renderBlock("example-div", {container:app, cls:"main", content:""});
+  window.application.renderBlock("example-div", {
+    container: app,
+    cls: "main",
+    content: "",
+  });
   const main = app.querySelector(".main");
-  window.application.renderBlock("example-div", {container:main, cls:"complexity", content:""});
+  window.application.renderBlock("example-div", {
+    container: main,
+    cls: "complexity",
+    content: "",
+  });
 
   const div = main.querySelector(".complexity");
   window.application.renderBlock("example-div", {
@@ -51,21 +59,21 @@ function renderExampleScreenStart() {
   const complexity_choice_area = div.querySelector(".complexity_choice_area");
   window.application.renderBlock("example-false", {
     container: complexity_choice_area,
-    classes: ["complexity_choice_button"],
+    cls: ["complexity_choice_button"],
     content: "1",
-    dataAttrs: ["easy"],
+    id: "easy",
   });
   window.application.renderBlock("example-false", {
     container: complexity_choice_area,
-    classes: ["complexity_choice_button"],
+    cls: ["complexity_choice_button"],
     content: "2",
-    dataAttrs: ["average"],
+    id: ["average"],
   });
   window.application.renderBlock("example-false", {
     container: complexity_choice_area,
-    classes: ["complexity_choice_button"],
+    cls: ["complexity_choice_button"],
     content: "3",
-    dataAttrs: ["difficult"],
+    id: ["difficult"],
   });
 
   window.application.renderBlock("example-button", {

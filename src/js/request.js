@@ -1,37 +1,34 @@
-const noop = ()=>{};
+const noop = () => {};
 
-function  request({
-    method = 'GET',
-    url,
-    type = 'json',
-    checkStatusInResponse = false,
-    onSuccess = noop,
-    onError = noop,
-})
-{
-    const req = new XMLHttpRequest();
+function request({
+  method = "GET",
+  url,
+  type = "json",
+  checkStatusInResponse = false,
+  onSuccess = noop,
+  onError = noop,
+}) {
+  const req = new XMLHttpRequest();
 
-    req.open(method,url);
-    req.responseType = type;
-    
-    req.onload = function (event) {
-        const target = event.target;
+  req.open(method, url);
+  req.responseType = type;
 
-        if (target.status !== 200) {
-            onError(target.statusText);
-            return;
-        }
+  req.onload = function (event) {
+    const target = event.target;
 
-        if (checkStatusInResponse && target.response.status !== 'ok') 
-        {
-            onError(target.statusText);
-            return;
-        }
-        onSuccess(target.response);
+    if (target.status !== 200) {
+      onError(target.statusText);
+      return;
     }
-    req.onerror = function (){
-        onError();
-    }
-    req.send();
 
+    if (checkStatusInResponse && target.response.status !== "ok") {
+      onError(target.statusText);
+      return;
+    }
+    onSuccess(target.response);
+  };
+  req.onerror = function () {
+    onError();
+  };
+  req.send();
 }
