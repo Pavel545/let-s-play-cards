@@ -1,0 +1,37 @@
+{
+    "name": "playing-cards",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "http-server -p 3004",
+        "lint:js": "eslint ./src/**/*.js",
+        "lint:css": "stylelint ./src/**/*.css",
+        "lint": "",
+        "prepare": "husky install",
+        "format": "prettier --write ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Pavel545/let-s-play-cards.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Pavel545/let-s-play-cards/issues"
+    },
+    "homepage": "https://github.com/Pavel545/let-s-play-cards#readme",
+    "devDependencies": {
+        "eslint": "^8.21.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "husky": "^8.0.1",
+        "prettier": "^2.7.1",
+        "stylelint": "^14.9.1",
+        "stylelint-config-prettier": "^9.0.3",
+        "stylelint-config-standard": "^26.0.0",
+        "stylelint-prettier": "^2.0.0"
+    }
+}
