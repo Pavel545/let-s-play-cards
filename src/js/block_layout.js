@@ -86,7 +86,7 @@ window.application.screens['example'] = renderExampleScreenStart
 function renderExampleImg({ container, cls, id, src }) {
     const img = {
         tag: 'img',
-        cls: `${cls}`,
+        cls: cls,
         attrs: {
             id: id,
             src: src,
@@ -100,12 +100,12 @@ function renderExampleScreenGameShirt() {
     const app = document.querySelector('.app')
     const deck = app.querySelector('.deck')
     deck.innerHTML = ''
-
-    for (let i = 0; i < 36; i++) {
+    const arr = easy()
+    for (let i = 0; i < window.deckT.length; i++) {
         window.application.renderBlock('example-img', {
             container: deck,
             cls: 'deck_cards_shirt',
-            id: i + 1,
+            id: arr[i],
             src: './src/js/Img/shirt.jpg',
         })
     }
@@ -165,15 +165,103 @@ function renderExampleScreenGameDisplay() {
         content: '',
     })
     const deck = main.querySelector('.deck')
-    for (let i = 1; i < 5; i++) {
-        for (let j = 6; j < 15; j++) {
-            window.application.renderBlock('example-img', {
-                container: deck,
-                cls: 'deck_cards_shirt',
-                id: `${i - 5}` + `.${j}`,
-                src: `./src/js/Img/${j}.${i}.png`,
-            })
-        }
-    }
+    // for (let i = 1; i < 5; i++) {
+    //     for (let j = 6; j < 15; j++) {
+    //         window.application.renderBlock('example-img', {
+    //             container: deck,
+    //             cls: 'deck_cards_shirt',
+    //             id: `${i - 5}` + `.${j}`,
+    //             src: `./src/js/Img/${j}.${i}.png`,
+    //         })
+    //     }
+    // }
 }
 window.application.screens['gameDisplay'] = renderExampleScreenGameDisplay
+function renderExampleComplexity() {
+    const app = document.querySelector('.app')
+    const main = app.querySelector('.startGame')
+    const deck = main.querySelector('.deck')
+    let arr =0
+    if (window.complexity === 'easy') {
+        arr = easy()
+    }
+    if (window.complexity === 'average') {
+        arr = average()
+    }
+    if (window.complexity === 'difficult') {
+        arr = difficult()
+    }
+    
+    console.log(arr)
+    for (let i = 0; i < arr.length; i++) {
+        window.application.renderBlock('example-img', {
+            container: deck,
+            cls: 'deck_cards_shirt',
+            id: arr[i],
+            src: `./src/js/Img/${arr[i]}.png`,
+        })
+    }
+    window.deckT = deck.querySelectorAll('.deck_cards_shirt')
+}
+window.application.screens['gameComplexity'] = renderExampleComplexity
+function easy() {
+    let arr = []
+    let counter = 0
+    for (let i = 0; i < 10; i = i + 9) {
+        for (let j = 0; j < 3; j++) {
+            arr[counter] = window.deckID[j + i]
+            counter++
+        }
+    }
+    console.log(arr)
+    function shuffle() {
+        for (let i = arr.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1))
+            ;[arr[i], arr[j]] = [arr[j], arr[i]]
+        }
+    }
+    shuffle()
+
+    return arr
+}
+function average() {
+    let arr = []
+    let counter = 0
+    for (let i = 0; i < 10; i = i + 9) {
+        for (let j = 0; j < 6; j++) {
+            arr[counter] = window.deckID[j + i]
+            counter++
+        }
+    }
+    console.log(arr)
+    function shuffle() {
+        for (let i = arr.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1))
+            ;[arr[i], arr[j]] = [arr[j], arr[i]]
+        }
+    }
+    shuffle()
+
+    return arr
+}
+function difficult() {
+    let arr = []
+    let counter = 0
+    for (let i = 0; i < 10; i = i + 9) {
+        for (let j = 0; j < 9; j++) {
+            arr[counter] = window.deckID[j + i]
+            counter++
+        }
+    }
+    console.log(arr)
+    function shuffle() {
+        for (let i = arr.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1))
+            ;[arr[i], arr[j]] = [arr[j], arr[i]]
+        }
+    }
+    shuffle()
+
+    return arr
+}
+
