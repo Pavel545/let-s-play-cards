@@ -197,34 +197,18 @@ function renderExampleComplexity() {
 function complexityS(arr) {
     switch (arr) {
         case 'easy':
-            arr = easy();
-            break;
+            return easy();
         case 'average':
-            arr = average();
-            break;
+            return average();
         case 'difficult':
-            arr = difficult();
-            break;
+            return difficult();
         default:
             break;
     }
-    return arr;
 }
 window.application.screens['gameComplexity'] = renderExampleComplexity;
 function easy() {
-    let arr = [];
-    let counter = 0;
-    for (let i = 0; i < 10; i += 9) {
-        for (let j = 0; j < 3; j++) {
-            arr[counter] = window.deckID[j + i];
-            counter++;
-        }
-    }
-    console.log(arr);
-    
-    arr = shuffle(arr);
-
-    return arr;
+    return createCards(3);
 }
 function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -233,31 +217,20 @@ function shuffle(arr) {
     }
     return arr
 }
-function average() {
+const createCards = (count) => {
     let arr = [];
     let counter = 0;
-    for (let i = 0; i < 10; i +=  9) {
-        for (let j = 0; j < 6; j++) {
-            arr[counter] = window.deckID[j + i];
-            counter++;
-        }
+    for (let i = 0; i < 10; i += 9) {
+    for (let j = 0; j < count; j++) {
+    arr[counter] = window.deckID[j + i];
+    counter++;
     }
-    console.log(arr);
-    arr = shuffle(arr);
-
-    return arr;
+    }
+    return shuffle(arr)
+}
+function average() {
+    return createCards(6);
 }
 function difficult() {
-    let arr = [];
-    let counter = 0;
-    for (let i = 0; i < 10; i +=  9) {
-        for (let j = 0; j < 9; j++) {
-            arr[counter] = window.deckID[j + i];
-            counter++;
-        }
-    }
-    console.log(arr);
-    arr = shuffle(arr);
-
-    return arr;
+    return createCards(9);
 }
