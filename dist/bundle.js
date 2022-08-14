@@ -24,6 +24,7 @@ window.deckID = [
     11.2, 12.2, 13.2, 14.2, 6.3, 7.3, 8.3, 9.3, 10.3, 11.3, 12.3, 13.3, 14.3,
     6.4, 7.4, 8.4, 9.4, 10.4, 11.4, 12.4, 13.4, 14.4,
 ]
+window.time ='00:00'
 
 
 /***/ }),
@@ -37,88 +38,88 @@ window.deckID = [
 function renderExampleDiv({ container, cls, content }) {
     const div = {
         tag: 'div',
-        cls: `${cls}`,
-        content: `${content}`,
-    }
-    container.appendChild(templateEngine(div))
+        cls,
+        content,
+    };
+    container.appendChild(templateEngine(div));
 }
-window.application.blocks['example-div'] = renderExampleDiv
+window.application.blocks['example-div'] = renderExampleDiv;
 function renderExampleButtonFalse({ container, cls, content, id }) {
     const div = {
         tag: 'div',
-        cls: cls,
-        content: content,
+        cls,
+        content,
         attrs: {
             id,
         },
-    }
-    container.appendChild(templateEngine(div))
+    };
+    container.appendChild(templateEngine(div));
 }
-window.application.blocks['example-false'] = renderExampleButtonFalse
+window.application.blocks['example-false'] = renderExampleButtonFalse;
 function renderExampleButton({ container, cls, content }) {
     const button = {
         tag: 'button',
-        cls: cls,
-        content: content,
-    }
-    container.appendChild(templateEngine(button))
+        cls,
+        content,
+    };
+    container.appendChild(templateEngine(button));
 }
-window.application.blocks['example-button'] = renderExampleButton
+window.application.blocks['example-button'] = renderExampleButton;
 
 function renderExampleScreenStart() {
-    const app = document.querySelector('.app')
-
+    const app = document.querySelector('.app');
+    app.innerHTML='';
     window.application.renderBlock('example-div', {
         container: app,
         cls: 'main',
         content: '',
-    })
-    const main = app.querySelector('.main')
+    });
+    const main = app.querySelector('.main');
     window.application.renderBlock('example-div', {
         container: main,
         cls: 'complexity',
         content: '',
-    })
+    });
 
-    const div = main.querySelector('.complexity')
+    const div = main.querySelector('.complexity');
     window.application.renderBlock('example-div', {
         container: div,
         cls: 'complexity_text',
         content: 'Выбери сложность',
-    })
+    });
     window.application.renderBlock('example-div', {
         container: div,
         cls: 'complexity_choice_area',
         content: '',
-    })
+    });
 
-    const complexity_choice_area = div.querySelector('.complexity_choice_area')
+    const complexity_choice_area = div.querySelector('.complexity_choice_area');
     window.application.renderBlock('example-false', {
         container: complexity_choice_area,
         cls: ['complexity_choice_button'],
         content: '1',
         id: 'easy',
-    })
+    });
     window.application.renderBlock('example-false', {
         container: complexity_choice_area,
         cls: ['complexity_choice_button'],
         content: '2',
         id: ['average'],
-    })
+    });
     window.application.renderBlock('example-false', {
         container: complexity_choice_area,
         cls: ['complexity_choice_button'],
         content: '3',
         id: ['difficult'],
-    })
+    });
 
     window.application.renderBlock('example-button', {
         container: div,
         cls: 'complexity_button',
         content: 'Старт',
-    })
+    });
 }
-window.application.screens['example'] = renderExampleScreenStart
+window.application.screens['example'] = renderExampleScreenStart;
 function renderExampleImg({ container, cls, id, src }) {
     const img = {
         tag: 'img',
@@ -127,180 +128,242 @@ function renderExampleImg({ container, cls, id, src }) {
             id: id,
             src: src,
         },
-    }
-    container.appendChild(templateEngine(img))
+    };
+    container.appendChild(templateEngine(img));
 }
-window.application.blocks['example-img'] = renderExampleImg
+window.application.blocks['example-img'] = renderExampleImg;
 
 function renderExampleScreenGameShirt() {
-    const app = document.querySelector('.app')
-    const deck = app.querySelector('.deck')
-    deck.innerHTML = ''
-    const arr = easy()
-    for (let i = 0; i < window.deckT.length; i++) {
+    const app = document.querySelector('.app');
+    const deck = app.querySelector('.deck');
+    deck.innerHTML = '';
+    const arr = easy();
+    window.deckT.forEach((index) => {
         window.application.renderBlock('example-img', {
             container: deck,
             cls: 'deck_cards_shirt',
-            id: arr[i],
+            id: arr[index],
             src: './src/js/Img/shirt.jpg',
-        })
-    }
+        });
+    });
 }
-window.application.screens['gameShirt'] = renderExampleScreenGameShirt
+window.application.screens['gameShirt'] = renderExampleScreenGameShirt;
 function renderExampleScreenGameDisplay() {
-    const app = document.querySelector('.app')
-    app.innerHTML = ''
+    const app = document.querySelector('.app');
+    app.innerHTML = '';
     window.application.renderBlock('example-div', {
         container: app,
         cls: 'startGame',
         content: '',
-    })
-    const main = app.querySelector('.startGame')
+    });
+    const main = app.querySelector('.startGame');
     window.application.renderBlock('example-div', {
         container: main,
         cls: 'head',
         content: '',
-    })
-    const head = main.querySelector('.head')
+    });
+    const head = main.querySelector('.head');
     window.application.renderBlock('example-div', {
         container: head,
         cls: 'head_timer',
         content: '',
-    })
-    const timer = main.querySelector('.head_timer')
+    });
+    const timer = main.querySelector('.head_timer');
     window.application.renderBlock('example-div', {
         container: timer,
         cls: 'head_timer_box',
         content: '',
-    })
-    const box = main.querySelector('.head_timer_box')
+    });
+    const box = main.querySelector('.head_timer_box');
 
     window.application.renderBlock('example-div', {
         container: box,
         cls: 'head_timer_type',
         content: 'min',
-    })
+    });
     window.application.renderBlock('example-div', {
         container: box,
         cls: 'head_timer_type',
         content: 'sek',
-    })
+    });
     window.application.renderBlock('example-div', {
         container: timer,
         cls: 'head_timer_counter',
         content: '00.00',
-    })
+    });
     window.application.renderBlock('example-button', {
         container: head,
         cls: 'head_button',
         content: 'Начать заново ',
-    })
+    });
     window.application.renderBlock('example-div', {
         container: main,
         cls: 'deck',
         content: '',
-    })
-    const deck = main.querySelector('.deck')
-    // for (let i = 1; i < 5; i++) {
-    //     for (let j = 6; j < 15; j++) {
-    //         window.application.renderBlock('example-img', {
-    //             container: deck,
-    //             cls: 'deck_cards_shirt',
-    //             id: `${i - 5}` + `.${j}`,
-    //             src: `./src/js/Img/${j}.${i}.png`,
-    //         })
-    //     }
-    // }
+    });
+    const deck = main.querySelector('.deck');
+
 }
-window.application.screens['gameDisplay'] = renderExampleScreenGameDisplay
+window.application.screens['gameDisplay'] = renderExampleScreenGameDisplay;
 function renderExampleComplexity() {
-    const app = document.querySelector('.app')
-    const main = app.querySelector('.startGame')
-    const deck = main.querySelector('.deck')
-    let arr =0
-    if (window.complexity === 'easy') {
-        arr = easy()
-    }
-    if (window.complexity === 'average') {
-        arr = average()
-    }
-    if (window.complexity === 'difficult') {
-        arr = difficult()
-    }
-    
-    console.log(arr)
-    for (let i = 0; i < arr.length; i++) {
+    const app = document.querySelector('.app');
+    const main = app.querySelector('.startGame');
+    const deck = main.querySelector('.deck');
+    let arr = [];
+    arr = complexityS(window.complexity);
+    console.log(arr);
+    arr.forEach((element, index) => {
         window.application.renderBlock('example-img', {
             container: deck,
             cls: 'deck_cards_shirt',
-            id: arr[i],
-            src: `./src/js/Img/${arr[i]}.png`,
-        })
-    }
-    window.deckT = deck.querySelectorAll('.deck_cards_shirt')
+            id: arr[index],
+            src: `./src/js/Img/${element}.png`,
+        });
+    });
+    window.deckT = deck.querySelectorAll('.deck_cards_shirt');
 }
-window.application.screens['gameComplexity'] = renderExampleComplexity
+window.application.screens['gameComplexity'] = renderExampleComplexity;
+function complexityS(arr) {
+    switch (arr) {
+        case 'easy':
+            return easy();
+        case 'average':
+            return average();
+        case 'difficult':
+            return difficult();
+        default:
+            break;
+    }
+}
 function easy() {
-    let arr = []
-    let counter = 0
-    for (let i = 0; i < 10; i = i + 9) {
-        for (let j = 0; j < 3; j++) {
-            arr[counter] = window.deckID[j + i]
-            counter++
-        }
+    return createCards(3);
+}
+function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    console.log(arr)
-    function shuffle() {
-        for (let i = arr.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1))
-            ;[arr[i], arr[j]] = [arr[j], arr[i]]
-        }
-    }
-    shuffle()
-
     return arr
+}
+const createCards = (count) => {
+    let arr = [];
+    let counter = 0;
+    for (let i = 0; i < 10; i += 9) {
+    for (let j = 0; j < count; j++) {
+    arr[counter] = window.deckID[j + i];
+    counter++;
+    }
+    }
+    return shuffle(arr)
 }
 function average() {
-    let arr = []
-    let counter = 0
-    for (let i = 0; i < 10; i = i + 9) {
-        for (let j = 0; j < 6; j++) {
-            arr[counter] = window.deckID[j + i]
-            counter++
-        }
-    }
-    console.log(arr)
-    function shuffle() {
-        for (let i = arr.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1))
-            ;[arr[i], arr[j]] = [arr[j], arr[i]]
-        }
-    }
-    shuffle()
-
-    return arr
+    return createCards(6);
 }
 function difficult() {
-    let arr = []
-    let counter = 0
-    for (let i = 0; i < 10; i = i + 9) {
-        for (let j = 0; j < 9; j++) {
-            arr[counter] = window.deckID[j + i]
-            counter++
-        }
-    }
-    console.log(arr)
-    function shuffle() {
-        for (let i = arr.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1))
-            ;[arr[i], arr[j]] = [arr[j], arr[i]]
-        }
-    }
-    shuffle()
-
-    return arr
+    return createCards(9);
 }
+function renderScreen() {
+    for (let i = 0; i < window.application.timers.length; i++) {
+      clearInterval(window.application.timers[i]);
+    }
+}
+function renderExampleAlink({ container, cls, content }) {
+    const a = {
+        tag: 'a',
+        cls,
+        content,
+    };
+    container.appendChild(templateEngine(a));
+}
+window.application.blocks['example-link'] = renderExampleAlink;
 
+function renderExampleScreenLost() {
+    const app = document.querySelector('.app');
+    window.application.renderBlock('example-div', {
+        container: app,
+        cls: 'overlay',
+        content: '',
+    });
+    const overlay = app.querySelector('.overlay')
+    window.application.renderBlock('example-div', {
+        container: overlay,
+        cls: 'popUpScreen',
+        content: '',
+    });
+    const popUpScreen = app.querySelector('.popUpScreen')
+    window.application.renderBlock('example-img', {
+        container: popUpScreen,
+        cls: 'popUpScreen_img_lost',
+        id: 'loser',
+        src: `./src/js/Img/loser.png`,
+    });
+    window.application.renderBlock('example-div', {
+        container: popUpScreen,
+        cls: 'popUpScreen_result',
+        content: 'Вы проиграли!',
+    });
+    window.application.renderBlock('example-div', {
+        container: popUpScreen,
+        cls: 'popUpScreen_time',
+        content: 'Затраченное время:',
+    });
+    window.application.renderBlock('example-div', {
+        container: popUpScreen,
+        cls: 'popUpScreen_time_counter',
+        content: window.time,
+    });
+    window.application.renderBlock('example-button', {
+        container: popUpScreen,
+        cls: 'head_button',
+        content: 'Начать снова ',
+    });
+
+
+
+}
+window.application.screens['gameLost'] = renderExampleScreenLost;
+function renderExampleScreenWin() {
+    const app = document.querySelector('.app');
+    window.application.renderBlock('example-div', {
+        container: app,
+        cls: 'overlay',
+        content: '',
+    });
+    const overlay = app.querySelector('.overlay')
+    window.application.renderBlock('example-div', {
+        container: overlay,
+        cls: 'popUpScreen',
+        content: '',
+    });
+    const popUpScreen = app.querySelector('.popUpScreen')
+    window.application.renderBlock('example-img', {
+        container: popUpScreen,
+        cls: 'popUpScreen_img_lost',
+        id: 'loser',
+        src: `./src/js/Img/win.png`,
+    });
+    window.application.renderBlock('example-div', {
+        container: popUpScreen,
+        cls: 'popUpScreen_result',
+        content: 'Вы выиграли!',
+    });
+    window.application.renderBlock('example-div', {
+        container: popUpScreen,
+        cls: 'popUpScreen_time',
+        content: 'Затраченное время:',
+    });
+    window.application.renderBlock('example-div', {
+        container: popUpScreen,
+        cls: 'popUpScreen_time_counter',
+        content: window.time,
+    });
+    window.application.renderBlock('example-button', {
+        container: popUpScreen,
+        cls: 'head_button',
+        content: 'Начать снова ',
+    });
+}
+window.application.screens['gameWin'] = renderExampleScreenWin;
 
 
 /***/ }),
@@ -311,81 +374,154 @@ function difficult() {
   \********************************/
 /***/ (() => {
 
-const app = document.querySelector('.app')
-window.application.renderScreen('example')
+const app = document.querySelector('.app');
+let sec = 0;
+let min = 0;
+function newGame() {
+    renderScreen();
+    sec = 0;
+    min = 0;
+    window.application.renderScreen('example');
 
-const complexity = app.querySelectorAll('.complexity_choice_button')
+    const complexity = app.querySelectorAll('.complexity_choice_button');
 
-complexity.forEach((control) => {
-    control.addEventListener('click', () => {
-        console.log(control.id)
-        window.complexity = control.id
-    })
-})
+    complexity.forEach((control) => {
+        control.addEventListener('click', () => {
+            console.log(control.id);
+            window.complexity = control.id;
+        });
+    });
 
-const start = app.querySelector('.complexity_button')
-start.addEventListener('click', () => {
-    if (window.complexity === '') {
-        alert('Пожалуста, выберите сложность')
-        return
-    }
-    startGame()
-})
+    const start = app.querySelector('.complexity_button');
+    start.addEventListener('click', () => {
+        if (window.complexity === '') {
+            alert('Пожалуста, выберите сложность');
+            return;
+        }
+        startGame();
+    });
+}
+newGame();
+
 function startGame() {
-    window.application.renderScreen('gameDisplay')
+    window.time = '';
+    window.application.renderScreen('gameDisplay');
 
-    window.application.renderScreen('gameComplexity')
+    window.application.renderScreen('gameComplexity');
 
     setTimeout(() => {
-        window.application.renderScreen('gameShirt')
-        easyGame()
-    }, 5000)
+        window.application.renderScreen('gameShirt');
+        progressGame();
+
+        window.application.timers.push(setInterval(timer, 1000));
+    }, 5000);
+    const head = app.querySelector('.head');
+    const butter = head.querySelector('.head_button');
+
+    butter.addEventListener('click', () => {
+        newGame();
+        window.time = '00:00';
+        return;
+    });
 }
-function easyGame() {
-    const main = app.querySelector('.startGame')
-    const deck = main.querySelector('.deck')
 
-    let cards = deck.querySelectorAll('.deck_cards_shirt')
 
-    let counters = 0
-    let countersWin = 0
-    let previous
-    console.log(cards)
+function timer() {
+    const head_timer_counter = app.querySelector('.head_timer_counter');
+    //renderScreen();
+    sec++;
+    if (sec > 59) {
+        min++;
+        sec = 0;
+    }
+    head_timer_counter.textContent = `${min} :${sec}`;
+}
+function progressGame() {
+    const main = app.querySelector('.startGame');
+    const deck = main.querySelector('.deck');
+    let cards = deck.querySelectorAll('.deck_cards_shirt');
+
+    let counters = 0;
+    let countersWin = 0;
+    let previous;
+    console.log(cards);
     cards.forEach((control, index) => {
         control.addEventListener('click', () => {
-            if (
-                counters > 0 &&
-                `${previous.id}`[0] === `${window.deckT[index].id}`[0]
-            ) {
+            if (counters > 0 && previous.id[0] === window.deckT[index].id[0]) {
                 // alert('ók')
-                counters = -1
-                previous = ''
+                counters = -1;
+                previous = '';
             }
             if (
                 counters > 0 &&
-                `${previous.id}`[0] != `${window.deckT[index].id}`[0] &&
+                previous.id[0] != window.deckT[index].id[0] &&
                 previous != ''
             ) {
-                alert('Увы вы проиграли')
-                return
+                const head_timer_counter = app.querySelector(
+                    '.head_timer_counter'
+                );
+                window.time = head_timer_counter.textContent;
+                loser();
+                renderScreen();
+                return;
             }
 
-            previous = window.deckT[index]
-            cards[index].src = window.deckT[index].src
-            counters++
-            countersWin++
+            previous = window.deckT[index];
+            cards[index].src = window.deckT[index].src;
+            counters++;
+            countersWin++;
             if (countersWin === 6 && window.complexity === 'easy') {
-                alert('Вы выйграли')
+                const head_timer_counter = app.querySelector(
+                    '.head_timer_counter'
+                );
+                window.time = head_timer_counter.textContent;
+                Win();
+                renderScreen();
+                return;
             }
             if (countersWin === 12 && window.complexity === 'average') {
-                alert('Вы выйграли')
+                const head_timer_counter = app.querySelector(
+                    '.head_timer_counter'
+                );
+                window.time = head_timer_counter.textContent;
+                Win();
+                renderScreen();
+                return;
             }
             if (countersWin === 18 && window.complexity === 'difficult') {
-                alert('Вы выйграли')
+                const head_timer_counter = app.querySelector(
+                    '.head_timer_counter'
+                );
+                window.time = head_timer_counter.textContent;
+                Win();
+                renderScreen();
+                return;
             }
-        })
-    })
-    console.log(window.deckT)
+        });
+    });
+    console.log(window.deckT);
+}
+function loser() {
+    window.application.renderScreen('gameLost');
+    const popUpScreen = app.querySelector('.popUpScreen');
+    const butter = popUpScreen.querySelector('.head_button');
+
+    butter.addEventListener('click', () => {
+        newGame();
+        window.time = '00:00';
+        return;
+    });
+}
+function Win() {
+    window.application.renderScreen('gameWin');
+    const popUpScreen = app.querySelector('.popUpScreen');
+    const butter = popUpScreen.querySelector('.head_button');
+
+    butter.addEventListener('click', () => {
+        newGame();
+        window.time = '00:00';
+        return;
+    });
 }
 
 
