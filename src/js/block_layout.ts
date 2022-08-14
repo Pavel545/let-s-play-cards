@@ -29,22 +29,31 @@ function renderExampleButton({ container, cls, content }) {
 }
 window.application.blocks['example-button'] = renderExampleButton;
 
+interface obj {
+    name: string;
+    container: object;
+    cls: string;
+    content?: string;
+}
 function renderExampleScreenStart() {
-    const app = document.querySelector('.app');
-    app.innerHTML='';
+    const app: Element | null = document.querySelector('.app');
+    if (app) {
+        app.innerHTML = '';
+    }
+
     window.application.renderBlock('example-div', {
         container: app,
         cls: 'main',
         content: '',
     });
-    const main = app.querySelector('.main');
+    const main = app?.querySelector('.main');
     window.application.renderBlock('example-div', {
         container: main,
         cls: 'complexity',
         content: '',
     });
 
-    const div = main.querySelector('.complexity');
+    const div = main?.querySelector('.complexity');
     window.application.renderBlock('example-div', {
         container: div,
         cls: 'complexity_text',
@@ -56,7 +65,9 @@ function renderExampleScreenStart() {
         content: '',
     });
 
-    const complexity_choice_area = div.querySelector('.complexity_choice_area');
+    const complexity_choice_area = div?.querySelector(
+        '.complexity_choice_area'
+    );
     window.application.renderBlock('example-false', {
         container: complexity_choice_area,
         cls: ['complexity_choice_button'],
@@ -98,10 +109,12 @@ window.application.blocks['example-img'] = renderExampleImg;
 
 function renderExampleScreenGameShirt() {
     const app = document.querySelector('.app');
-    const deck = app.querySelector('.deck');
-    deck.innerHTML = '';
+    const deck = app?.querySelector('.deck');
+    if (deck) {
+        deck.innerHTML = '';
+    }
     const arr = easy();
-    window.deckT.forEach((index) => {
+    window.deckT?.forEach((a, index) => {
         window.application.renderBlock('example-img', {
             container: deck,
             cls: 'deck_cards_shirt',
@@ -113,31 +126,34 @@ function renderExampleScreenGameShirt() {
 window.application.screens['gameShirt'] = renderExampleScreenGameShirt;
 function renderExampleScreenGameDisplay() {
     const app = document.querySelector('.app');
-    app.innerHTML = '';
+    if (app) {
+        app.innerHTML = '';
+    }
+
     window.application.renderBlock('example-div', {
         container: app,
         cls: 'startGame',
         content: '',
     });
-    const main = app.querySelector('.startGame');
+    const main = app?.querySelector('.startGame');
     window.application.renderBlock('example-div', {
         container: main,
         cls: 'head',
         content: '',
     });
-    const head = main.querySelector('.head');
+    const head = main?.querySelector('.head');
     window.application.renderBlock('example-div', {
         container: head,
         cls: 'head_timer',
         content: '',
     });
-    const timer = main.querySelector('.head_timer');
+    const timer = main?.querySelector('.head_timer');
     window.application.renderBlock('example-div', {
         container: timer,
         cls: 'head_timer_box',
         content: '',
     });
-    const box = main.querySelector('.head_timer_box');
+    const box = main?.querySelector('.head_timer_box');
 
     window.application.renderBlock('example-div', {
         container: box,
@@ -164,14 +180,13 @@ function renderExampleScreenGameDisplay() {
         cls: 'deck',
         content: '',
     });
-    const deck = main.querySelector('.deck');
-
+    const deck = main?.querySelector('.deck');
 }
 window.application.screens['gameDisplay'] = renderExampleScreenGameDisplay;
 function renderExampleComplexity() {
     const app = document.querySelector('.app');
-    const main = app.querySelector('.startGame');
-    const deck = main.querySelector('.deck');
+    const main = app?.querySelector('.startGame');
+    const deck = main?.querySelector('.deck');
     let arr = [];
     arr = complexityS(window.complexity);
     console.log(arr);
@@ -183,7 +198,7 @@ function renderExampleComplexity() {
             src: `./src/js/Img/${element}.png`,
         });
     });
-    window.deckT = deck.querySelectorAll('.deck_cards_shirt');
+    window.deckT = deck?.querySelectorAll('.deck_cards_shirt');
 }
 window.application.screens['gameComplexity'] = renderExampleComplexity;
 function complexityS(arr) {
@@ -206,28 +221,28 @@ function shuffle(arr) {
         let j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    return arr
+    return arr;
 }
 const createCards = (count) => {
-    let arr = [];
-    let counter = 0;
+    let arr: number[] = [];
+    let counter: number = 0;
     for (let i = 0; i < 10; i += 9) {
-    for (let j = 0; j < count; j++) {
-    arr[counter] = window.deckID[j + i];
-    counter++;
+        for (let j = 0; j < count; j++) {
+            arr[counter] = window.deckID[j + i];
+            counter++;
+        }
     }
-    }
-    return shuffle(arr)
-}
+    return shuffle(arr);
+};
 function average() {
     return createCards(6);
 }
 function difficult() {
     return createCards(9);
 }
-function renderScreen() {
+function renderNull():void {
     for (let i = 0; i < window.application.timers.length; i++) {
-      clearInterval(window.application.timers[i]);
+        clearInterval(window.application.timers[i]);
     }
 }
 function renderExampleAlink({ container, cls, content }) {
@@ -247,13 +262,13 @@ function renderExampleScreenLost() {
         cls: 'overlay',
         content: '',
     });
-    const overlay = app.querySelector('.overlay')
+    const overlay = app?.querySelector('.overlay');
     window.application.renderBlock('example-div', {
         container: overlay,
         cls: 'popUpScreen',
         content: '',
     });
-    const popUpScreen = app.querySelector('.popUpScreen')
+    const popUpScreen = app?.querySelector('.popUpScreen');
     window.application.renderBlock('example-img', {
         container: popUpScreen,
         cls: 'popUpScreen_img_lost',
@@ -280,9 +295,6 @@ function renderExampleScreenLost() {
         cls: 'head_button',
         content: 'Начать снова ',
     });
-
-
-
 }
 window.application.screens['gameLost'] = renderExampleScreenLost;
 function renderExampleScreenWin() {
@@ -292,13 +304,13 @@ function renderExampleScreenWin() {
         cls: 'overlay',
         content: '',
     });
-    const overlay = app.querySelector('.overlay')
+    const overlay = app?.querySelector('.overlay');
     window.application.renderBlock('example-div', {
         container: overlay,
         cls: 'popUpScreen',
         content: '',
     });
-    const popUpScreen = app.querySelector('.popUpScreen')
+    const popUpScreen = app?.querySelector('.popUpScreen');
     window.application.renderBlock('example-img', {
         container: popUpScreen,
         cls: 'popUpScreen_img_lost',

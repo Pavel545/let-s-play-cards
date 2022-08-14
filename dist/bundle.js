@@ -1,87 +1,93 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/application.js":
+/***/ "./src/js/application.ts":
 /*!*******************************!*\
-  !*** ./src/js/application.js ***!
+  !*** ./src/js/application.ts ***!
   \*******************************/
 /***/ (() => {
 
-window.complexity = ''
+
+window.complexity = '';
 window.application = {
     blocks: {},
     screens: {},
     renderScreen: function (screenName) {
-        window.application.screens[screenName]()
+        window.application.screens[screenName]();
     },
     renderBlock: function (blockName, container, cls, content, attrs) {
-        window.application.blocks[blockName](container, cls, content, attrs)
+        window.application.blocks[blockName](container, cls, content, attrs);
     },
     timers: [],
-}
+};
 window.deckID = [
     6.1, 7.1, 8.1, 9.1, 10.1, 11.1, 12.1, 13.1, 14.1, 6.2, 7.2, 8.2, 9.2, 10.2,
     11.2, 12.2, 13.2, 14.2, 6.3, 7.3, 8.3, 9.3, 10.3, 11.3, 12.3, 13.3, 14.3,
     6.4, 7.4, 8.4, 9.4, 10.4, 11.4, 12.4, 13.4, 14.4,
-]
-window.time ='00:00'
+];
+window.time = '00:00';
 
 
 /***/ }),
 
-/***/ "./src/js/block_layout.js":
+/***/ "./src/js/block_layout.ts":
 /*!********************************!*\
-  !*** ./src/js/block_layout.js ***!
+  !*** ./src/js/block_layout.ts ***!
   \********************************/
 /***/ (() => {
 
-function renderExampleDiv({ container, cls, content }) {
-    const div = {
+
+function renderExampleDiv(_a) {
+    var container = _a.container, cls = _a.cls, content = _a.content;
+    var div = {
         tag: 'div',
-        cls,
-        content,
+        cls: cls,
+        content: content,
     };
     container.appendChild(templateEngine(div));
 }
 window.application.blocks['example-div'] = renderExampleDiv;
-function renderExampleButtonFalse({ container, cls, content, id }) {
-    const div = {
+function renderExampleButtonFalse(_a) {
+    var container = _a.container, cls = _a.cls, content = _a.content, id = _a.id;
+    var div = {
         tag: 'div',
-        cls,
-        content,
+        cls: cls,
+        content: content,
         attrs: {
-            id,
+            id: id,
         },
     };
     container.appendChild(templateEngine(div));
 }
 window.application.blocks['example-false'] = renderExampleButtonFalse;
-function renderExampleButton({ container, cls, content }) {
-    const button = {
+function renderExampleButton(_a) {
+    var container = _a.container, cls = _a.cls, content = _a.content;
+    var button = {
         tag: 'button',
-        cls,
-        content,
+        cls: cls,
+        content: content,
     };
     container.appendChild(templateEngine(button));
 }
 window.application.blocks['example-button'] = renderExampleButton;
-
 function renderExampleScreenStart() {
-    const app = document.querySelector('.app');
-    app.innerHTML='';
+    var app = document.querySelector('.app');
+    if (app) {
+        app.innerHTML = '';
+    }
     window.application.renderBlock('example-div', {
         container: app,
         cls: 'main',
         content: '',
     });
-    const main = app.querySelector('.main');
+    var main = app === null || app === void 0 ? void 0 : app.querySelector('.main');
     window.application.renderBlock('example-div', {
         container: main,
         cls: 'complexity',
         content: '',
     });
-
-    const div = main.querySelector('.complexity');
+    var div = main === null || main === void 0 ? void 0 : main.querySelector('.complexity');
     window.application.renderBlock('example-div', {
         container: div,
         cls: 'complexity_text',
@@ -92,8 +98,7 @@ function renderExampleScreenStart() {
         cls: 'complexity_choice_area',
         content: '',
     });
-
-    const complexity_choice_area = div.querySelector('.complexity_choice_area');
+    var complexity_choice_area = div === null || div === void 0 ? void 0 : div.querySelector('.complexity_choice_area');
     window.application.renderBlock('example-false', {
         container: complexity_choice_area,
         cls: ['complexity_choice_button'],
@@ -112,7 +117,6 @@ function renderExampleScreenStart() {
         content: '3',
         id: ['difficult'],
     });
-
     window.application.renderBlock('example-button', {
         container: div,
         cls: 'complexity_button',
@@ -120,8 +124,9 @@ function renderExampleScreenStart() {
     });
 }
 window.application.screens['example'] = renderExampleScreenStart;
-function renderExampleImg({ container, cls, id, src }) {
-    const img = {
+function renderExampleImg(_a) {
+    var container = _a.container, cls = _a.cls, id = _a.id, src = _a.src;
+    var img = {
         tag: 'img',
         cls: cls,
         attrs: {
@@ -132,13 +137,15 @@ function renderExampleImg({ container, cls, id, src }) {
     container.appendChild(templateEngine(img));
 }
 window.application.blocks['example-img'] = renderExampleImg;
-
 function renderExampleScreenGameShirt() {
-    const app = document.querySelector('.app');
-    const deck = app.querySelector('.deck');
-    deck.innerHTML = '';
-    const arr = easy();
-    window.deckT.forEach((index) => {
+    var _a;
+    var app = document.querySelector('.app');
+    var deck = app === null || app === void 0 ? void 0 : app.querySelector('.deck');
+    if (deck) {
+        deck.innerHTML = '';
+    }
+    var arr = easy();
+    (_a = window.deckT) === null || _a === void 0 ? void 0 : _a.forEach(function (a, index) {
         window.application.renderBlock('example-img', {
             container: deck,
             cls: 'deck_cards_shirt',
@@ -149,33 +156,34 @@ function renderExampleScreenGameShirt() {
 }
 window.application.screens['gameShirt'] = renderExampleScreenGameShirt;
 function renderExampleScreenGameDisplay() {
-    const app = document.querySelector('.app');
-    app.innerHTML = '';
+    var app = document.querySelector('.app');
+    if (app) {
+        app.innerHTML = '';
+    }
     window.application.renderBlock('example-div', {
         container: app,
         cls: 'startGame',
         content: '',
     });
-    const main = app.querySelector('.startGame');
+    var main = app === null || app === void 0 ? void 0 : app.querySelector('.startGame');
     window.application.renderBlock('example-div', {
         container: main,
         cls: 'head',
         content: '',
     });
-    const head = main.querySelector('.head');
+    var head = main === null || main === void 0 ? void 0 : main.querySelector('.head');
     window.application.renderBlock('example-div', {
         container: head,
         cls: 'head_timer',
         content: '',
     });
-    const timer = main.querySelector('.head_timer');
+    var timer = main === null || main === void 0 ? void 0 : main.querySelector('.head_timer');
     window.application.renderBlock('example-div', {
         container: timer,
         cls: 'head_timer_box',
         content: '',
     });
-    const box = main.querySelector('.head_timer_box');
-
+    var box = main === null || main === void 0 ? void 0 : main.querySelector('.head_timer_box');
     window.application.renderBlock('example-div', {
         container: box,
         cls: 'head_timer_type',
@@ -201,26 +209,25 @@ function renderExampleScreenGameDisplay() {
         cls: 'deck',
         content: '',
     });
-    const deck = main.querySelector('.deck');
-
+    var deck = main === null || main === void 0 ? void 0 : main.querySelector('.deck');
 }
 window.application.screens['gameDisplay'] = renderExampleScreenGameDisplay;
 function renderExampleComplexity() {
-    const app = document.querySelector('.app');
-    const main = app.querySelector('.startGame');
-    const deck = main.querySelector('.deck');
-    let arr = [];
+    var app = document.querySelector('.app');
+    var main = app === null || app === void 0 ? void 0 : app.querySelector('.startGame');
+    var deck = main === null || main === void 0 ? void 0 : main.querySelector('.deck');
+    var arr = [];
     arr = complexityS(window.complexity);
     console.log(arr);
-    arr.forEach((element, index) => {
+    arr.forEach(function (element, index) {
         window.application.renderBlock('example-img', {
             container: deck,
             cls: 'deck_cards_shirt',
             id: arr[index],
-            src: `./src/js/Img/${element}.png`,
+            src: "./src/js/Img/".concat(element, ".png"),
         });
     });
-    window.deckT = deck.querySelectorAll('.deck_cards_shirt');
+    window.deckT = deck === null || deck === void 0 ? void 0 : deck.querySelectorAll('.deck_cards_shirt');
 }
 window.application.screens['gameComplexity'] = renderExampleComplexity;
 function complexityS(arr) {
@@ -239,63 +246,64 @@ function easy() {
     return createCards(3);
 }
 function shuffle(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
+    var _a;
+    for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        _a = [arr[j], arr[i]], arr[i] = _a[0], arr[j] = _a[1];
     }
-    return arr
+    return arr;
 }
-const createCards = (count) => {
-    let arr = [];
-    let counter = 0;
-    for (let i = 0; i < 10; i += 9) {
-    for (let j = 0; j < count; j++) {
-    arr[counter] = window.deckID[j + i];
-    counter++;
+var createCards = function (count) {
+    var arr = [];
+    var counter = 0;
+    for (var i = 0; i < 10; i += 9) {
+        for (var j = 0; j < count; j++) {
+            arr[counter] = window.deckID[j + i];
+            counter++;
+        }
     }
-    }
-    return shuffle(arr)
-}
+    return shuffle(arr);
+};
 function average() {
     return createCards(6);
 }
 function difficult() {
     return createCards(9);
 }
-function renderScreen() {
-    for (let i = 0; i < window.application.timers.length; i++) {
-      clearInterval(window.application.timers[i]);
+function renderNull() {
+    for (var i = 0; i < window.application.timers.length; i++) {
+        clearInterval(window.application.timers[i]);
     }
 }
-function renderExampleAlink({ container, cls, content }) {
-    const a = {
+function renderExampleAlink(_a) {
+    var container = _a.container, cls = _a.cls, content = _a.content;
+    var a = {
         tag: 'a',
-        cls,
-        content,
+        cls: cls,
+        content: content,
     };
     container.appendChild(templateEngine(a));
 }
 window.application.blocks['example-link'] = renderExampleAlink;
-
 function renderExampleScreenLost() {
-    const app = document.querySelector('.app');
+    var app = document.querySelector('.app');
     window.application.renderBlock('example-div', {
         container: app,
         cls: 'overlay',
         content: '',
     });
-    const overlay = app.querySelector('.overlay')
+    var overlay = app === null || app === void 0 ? void 0 : app.querySelector('.overlay');
     window.application.renderBlock('example-div', {
         container: overlay,
         cls: 'popUpScreen',
         content: '',
     });
-    const popUpScreen = app.querySelector('.popUpScreen')
+    var popUpScreen = app === null || app === void 0 ? void 0 : app.querySelector('.popUpScreen');
     window.application.renderBlock('example-img', {
         container: popUpScreen,
         cls: 'popUpScreen_img_lost',
         id: 'loser',
-        src: `./src/js/Img/loser.png`,
+        src: "./src/js/Img/loser.png",
     });
     window.application.renderBlock('example-div', {
         container: popUpScreen,
@@ -317,30 +325,27 @@ function renderExampleScreenLost() {
         cls: 'head_button',
         content: 'Начать снова ',
     });
-
-
-
 }
 window.application.screens['gameLost'] = renderExampleScreenLost;
 function renderExampleScreenWin() {
-    const app = document.querySelector('.app');
+    var app = document.querySelector('.app');
     window.application.renderBlock('example-div', {
         container: app,
         cls: 'overlay',
         content: '',
     });
-    const overlay = app.querySelector('.overlay')
+    var overlay = app === null || app === void 0 ? void 0 : app.querySelector('.overlay');
     window.application.renderBlock('example-div', {
         container: overlay,
         cls: 'popUpScreen',
         content: '',
     });
-    const popUpScreen = app.querySelector('.popUpScreen')
+    var popUpScreen = app === null || app === void 0 ? void 0 : app.querySelector('.popUpScreen');
     window.application.renderBlock('example-img', {
         container: popUpScreen,
         cls: 'popUpScreen_img_lost',
         id: 'loser',
-        src: `./src/js/Img/win.png`,
+        src: "./src/js/Img/win.png",
     });
     window.application.renderBlock('example-div', {
         container: popUpScreen,
@@ -368,32 +373,30 @@ window.application.screens['gameWin'] = renderExampleScreenWin;
 
 /***/ }),
 
-/***/ "./src/js/game_process.js":
+/***/ "./src/js/game_process.ts":
 /*!********************************!*\
-  !*** ./src/js/game_process.js ***!
+  !*** ./src/js/game_process.ts ***!
   \********************************/
 /***/ (() => {
 
-const app = document.querySelector('.app');
-let sec = 0;
-let min = 0;
+
+var app = document.querySelector('.app');
+var sec = 0;
+var min = 0;
 function newGame() {
-    renderScreen();
+    renderNull();
     sec = 0;
     min = 0;
     window.application.renderScreen('example');
-
-    const complexity = app.querySelectorAll('.complexity_choice_button');
-
-    complexity.forEach((control) => {
-        control.addEventListener('click', () => {
+    var complexity = app === null || app === void 0 ? void 0 : app.querySelectorAll('.complexity_choice_button');
+    complexity === null || complexity === void 0 ? void 0 : complexity.forEach(function (control) {
+        control.addEventListener('click', function () {
             console.log(control.id);
             window.complexity = control.id;
         });
     });
-
-    const start = app.querySelector('.complexity_button');
-    start.addEventListener('click', () => {
+    var start = app === null || app === void 0 ? void 0 : app.querySelector('.complexity_button');
+    start === null || start === void 0 ? void 0 : start.addEventListener('click', function () {
         if (window.complexity === '') {
             alert('Пожалуста, выберите сложность');
             return;
@@ -402,99 +405,85 @@ function newGame() {
     });
 }
 newGame();
-
 function startGame() {
     window.time = '';
     window.application.renderScreen('gameDisplay');
-
     window.application.renderScreen('gameComplexity');
-
-    setTimeout(() => {
+    setTimeout(function () {
         window.application.renderScreen('gameShirt');
         progressGame();
-
         window.application.timers.push(setInterval(timer, 1000));
     }, 5000);
-    const head = app.querySelector('.head');
-    const butter = head.querySelector('.head_button');
-
-    butter.addEventListener('click', () => {
+    var head = app === null || app === void 0 ? void 0 : app.querySelector('.head');
+    var butter = head === null || head === void 0 ? void 0 : head.querySelector('.head_button');
+    butter === null || butter === void 0 ? void 0 : butter.addEventListener('click', function () {
         newGame();
         window.time = '00:00';
         return;
     });
 }
-
-
 function timer() {
-    const head_timer_counter = app.querySelector('.head_timer_counter');
+    var head_timer_counter = app === null || app === void 0 ? void 0 : app.querySelector('.head_timer_counter');
     //renderScreen();
     sec++;
     if (sec > 59) {
         min++;
         sec = 0;
     }
-    head_timer_counter.textContent = `${min} :${sec}`;
+    if (head_timer_counter) {
+        head_timer_counter.textContent = "".concat(min, " :").concat(sec);
+    }
 }
 function progressGame() {
-    const main = app.querySelector('.startGame');
-    const deck = main.querySelector('.deck');
-    let cards = deck.querySelectorAll('.deck_cards_shirt');
-
-    let counters = 0;
-    let countersWin = 0;
-    let previous;
+    var main = app === null || app === void 0 ? void 0 : app.querySelector('.startGame');
+    var deck = main === null || main === void 0 ? void 0 : main.querySelector('.deck');
+    var cards = deck === null || deck === void 0 ? void 0 : deck.querySelectorAll('.deck_cards_shirt');
+    var counters = 0;
+    var countersWin = 0;
+    var previous;
     console.log(cards);
-    cards.forEach((control, index) => {
-        control.addEventListener('click', () => {
-            if (counters > 0 && previous.id[0] === window.deckT[index].id[0]) {
-                // alert('ók')
-                counters = -1;
-                previous = '';
+    cards === null || cards === void 0 ? void 0 : cards.forEach(function (control, index) {
+        control.addEventListener('click', function () {
+            if (window.deckT) {
+                if (counters > 0 && previous.id[0] === window.deckT[index].id[0]) {
+                    // alert('ók')
+                    counters = -1;
+                    previous = '';
+                }
+                if (counters > 0 &&
+                    previous.id[0] != window.deckT[index].id[0] &&
+                    previous != '') {
+                    var head_timer_counter = app === null || app === void 0 ? void 0 : app.querySelector('.head_timer_counter');
+                    window.time = head_timer_counter === null || head_timer_counter === void 0 ? void 0 : head_timer_counter.textContent;
+                    loser();
+                    renderNull();
+                    return;
+                }
+                previous = window.deckT[index];
+                //@ts-ignore
+                cards ? [index].src = window.deckT[index].src : Element;
             }
-            if (
-                counters > 0 &&
-                previous.id[0] != window.deckT[index].id[0] &&
-                previous != ''
-            ) {
-                const head_timer_counter = app.querySelector(
-                    '.head_timer_counter'
-                );
-                window.time = head_timer_counter.textContent;
-                loser();
-                renderScreen();
-                return;
-            }
-
-            previous = window.deckT[index];
-            cards[index].src = window.deckT[index].src;
             counters++;
             countersWin++;
             if (countersWin === 6 && window.complexity === 'easy') {
-                const head_timer_counter = app.querySelector(
-                    '.head_timer_counter'
-                );
-                window.time = head_timer_counter.textContent;
+                var head_timer_counter = app === null || app === void 0 ? void 0 : app.querySelector('.head_timer_counter');
+                window.time = head_timer_counter === null || head_timer_counter === void 0 ? void 0 : head_timer_counter.textContent;
                 Win();
-                renderScreen();
+                renderNull();
                 return;
             }
             if (countersWin === 12 && window.complexity === 'average') {
-                const head_timer_counter = app.querySelector(
-                    '.head_timer_counter'
-                );
-                window.time = head_timer_counter.textContent;
+                var head_timer_counter = app === null || app === void 0 ? void 0 : app.querySelector('.head_timer_counter');
+                window.time = head_timer_counter === null || head_timer_counter === void 0 ? void 0 : head_timer_counter.textContent;
                 Win();
-                renderScreen();
+                renderNull();
                 return;
             }
             if (countersWin === 18 && window.complexity === 'difficult') {
-                const head_timer_counter = app.querySelector(
-                    '.head_timer_counter'
-                );
-                window.time = head_timer_counter.textContent;
+                var head_timer_counter = app === null || app === void 0 ? void 0 : app.querySelector('.head_timer_counter');
+                window.time = head_timer_counter === null || head_timer_counter === void 0 ? void 0 : head_timer_counter.textContent;
                 Win();
-                renderScreen();
+                renderNull();
                 return;
             }
         });
@@ -503,10 +492,9 @@ function progressGame() {
 }
 function loser() {
     window.application.renderScreen('gameLost');
-    const popUpScreen = app.querySelector('.popUpScreen');
-    const butter = popUpScreen.querySelector('.head_button');
-
-    butter.addEventListener('click', () => {
+    var popUpScreen = app === null || app === void 0 ? void 0 : app.querySelector('.popUpScreen');
+    var butter = popUpScreen === null || popUpScreen === void 0 ? void 0 : popUpScreen.querySelector('.head_button');
+    butter === null || butter === void 0 ? void 0 : butter.addEventListener('click', function () {
         newGame();
         window.time = '00:00';
         return;
@@ -514,10 +502,9 @@ function loser() {
 }
 function Win() {
     window.application.renderScreen('gameWin');
-    const popUpScreen = app.querySelector('.popUpScreen');
-    const butter = popUpScreen.querySelector('.head_button');
-
-    butter.addEventListener('click', () => {
+    var popUpScreen = app === null || app === void 0 ? void 0 : app.querySelector('.popUpScreen');
+    var butter = popUpScreen === null || popUpScreen === void 0 ? void 0 : popUpScreen.querySelector('.head_button');
+    butter === null || butter === void 0 ? void 0 : butter.addEventListener('click', function () {
         newGame();
         window.time = '00:00';
         return;
@@ -527,97 +514,44 @@ function Win() {
 
 /***/ }),
 
-/***/ "./src/js/request.js":
-/*!***************************!*\
-  !*** ./src/js/request.js ***!
-  \***************************/
-/***/ (() => {
-
-const noop = () => {}
-
-function request({
-    method = 'GET',
-    url,
-    type = 'json',
-    checkStatusInResponse = false,
-    onSuccess = noop,
-    onError = noop,
-}) {
-    const req = new XMLHttpRequest()
-
-    req.open(method, url)
-    req.responseType = type
-
-    req.onload = function (event) {
-        const target = event.target
-
-        if (target.status !== 200) {
-            onError(target.statusText)
-            return
-        }
-
-        if (checkStatusInResponse && target.response.status !== 'ok') {
-            onError(target.statusText)
-            return
-        }
-        onSuccess(target.response)
-    }
-    req.onerror = function () {
-        onError()
-    }
-    req.send()
-}
-
-
-/***/ }),
-
-/***/ "./src/js/template.js":
+/***/ "./src/js/template.ts":
 /*!****************************!*\
-  !*** ./src/js/template.js ***!
+  !*** ./src/js/template.ts ***!
   \****************************/
 /***/ (() => {
 
+
 function templateEngine(block) {
     if (block === undefined || block === null || block === false) {
-        return document.createTextNode('')
+        return document.createTextNode('');
     }
-    if (
-        typeof block === 'string' ||
+    if (typeof block === 'string' ||
         typeof block === 'number' ||
-        block === true
-    ) {
-        return document.createTextNode(block)
+        block === true) {
+        return document.createTextNode(block);
     }
     if (Array.isArray(block)) {
-        const fragment = document.createDocumentFragment()
-
-        block.forEach((element) => {
-            fragment.appendChild(templateEngine(element))
-        })
-
-        return fragment
+        var fragment_1 = document.createDocumentFragment();
+        block.forEach(function (element) {
+            fragment_1.appendChild(templateEngine(element));
+        });
+        return fragment_1;
     }
-
-    const result = document.createElement(block.tag)
-
+    var result = document.createElement(block.tag);
     if (block.cls) {
-        const classes = [].concat(block.cls)
-        classes.forEach((cls) => {
-            result.classList.add(cls)
-        })
+        var classes = [].concat(block.cls);
+        classes.forEach(function (cls) {
+            result.classList.add(cls);
+        });
     }
-
     if (block.attrs) {
-        const keys = Object.keys(block.attrs)
-
-        keys.forEach((key) => {
-            result.setAttribute(key, block.attrs[key])
-        })
+        var keys = Object.keys(block.attrs);
+        keys.forEach(function (key) {
+            result.setAttribute(key, block.attrs[key]);
+        });
     }
-
-    result.appendChild(templateEngine(block.content))
-
-    return result
+    result.appendChild(templateEngine(block.content));
+    return result;
 }
 
 
@@ -692,24 +626,20 @@ function templateEngine(block) {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-"use strict";
 /*!*************************!*\
-  !*** ./src/js/index.js ***!
+  !*** ./src/js/index.ts ***!
   \*************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./application */ "./src/js/application.js");
+/* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./application */ "./src/js/application.ts");
 /* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_application__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./template */ "./src/js/template.js");
+/* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./template */ "./src/js/template.ts");
 /* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_template__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _request__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./request */ "./src/js/request.js");
-/* harmony import */ var _request__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_request__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _block_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block_layout */ "./src/js/block_layout.js");
-/* harmony import */ var _block_layout__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_block_layout__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _game_process__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./game_process */ "./src/js/game_process.js");
-/* harmony import */ var _game_process__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_game_process__WEBPACK_IMPORTED_MODULE_4__);
-
+/* harmony import */ var _block_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block_layout */ "./src/js/block_layout.ts");
+/* harmony import */ var _block_layout__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_block_layout__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _game_process__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./game_process */ "./src/js/game_process.ts");
+/* harmony import */ var _game_process__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_game_process__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
