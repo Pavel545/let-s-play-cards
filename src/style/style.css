@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .main {
   height: 774px;
   background: #004980;
@@ -168,5 +169,77 @@
   height: 133px;
   background: #E4FBFF;
   border-radius: 4px;
+}
+
+.overlay {
+  background-color: rgba(1, 0, 0, 0.77);
+  right: 0;
+  left: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 11;
+  /*Появление модального окошка с верхнего края экрана*/
+}
+
+.overlay:target + .popUpScreen {
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  top: 17%;
+}
+
+.popUpScreen {
+  position: absolute;
+  width: 480px;
+  height: 459px;
+  left: 272px;
+  top: 158px;
+  background: #C2F5FF;
+  border-radius: 12px;
+  -webkit-box-shadow: 0 13px 21px rgba(0, 1, 0, 0.19), 0 21px 63px rgba(0, 1, 0, 0.31);
+          box-shadow: 0 13px 21px rgba(0, 1, 0, 0.19), 0 21px 63px rgba(0, 1, 0, 0.31);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.popUpScreen_result {
+  font-family: 'StratosSkyeng';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  color: #004980;
+  -webkit-font-feature-settings: 'pnum' on, 'lnum' on;
+          font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+.popUpScreen_img_lost {
+  left: 0.4%;
+  right: 0%;
+  top: 0%;
+  bottom: 0.4%;
+  padding-top: 9px;
+}
+
+.popUpScreen_time {
+  padding-top: 28px;
+}
+
+.popUpScreen_time_counter {
+  padding-top: 10px;
+  font-family: 'StratosSkyeng';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  padding-bottom: 40px;
 }
 /*# sourceMappingURL=style.css.map */

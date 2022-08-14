@@ -31,7 +31,7 @@ window.application.blocks['example-button'] = renderExampleButton;
 
 function renderExampleScreenStart() {
     const app = document.querySelector('.app');
-
+    app.innerHTML='';
     window.application.renderBlock('example-div', {
         container: app,
         cls: 'main',
@@ -165,16 +165,7 @@ function renderExampleScreenGameDisplay() {
         content: '',
     });
     const deck = main.querySelector('.deck');
-    // for (let i = 1; i < 5; i++) {
-    //     for (let j = 6; j < 15; j++) {
-    //         window.application.renderBlock('example-img', {
-    //             container: deck,
-    //             cls: 'deck_cards_shirt',
-    //             id: `${i - 5}` + `.${j}`,
-    //             src: `./src/js/Img/${j}.${i}.png`,
-    //         })
-    //     }
-    // }
+
 }
 window.application.screens['gameDisplay'] = renderExampleScreenGameDisplay;
 function renderExampleComplexity() {
@@ -194,6 +185,7 @@ function renderExampleComplexity() {
     });
     window.deckT = deck.querySelectorAll('.deck_cards_shirt');
 }
+window.application.screens['gameComplexity'] = renderExampleComplexity;
 function complexityS(arr) {
     switch (arr) {
         case 'easy':
@@ -206,7 +198,6 @@ function complexityS(arr) {
             break;
     }
 }
-window.application.screens['gameComplexity'] = renderExampleComplexity;
 function easy() {
     return createCards(3);
 }
@@ -234,3 +225,105 @@ function average() {
 function difficult() {
     return createCards(9);
 }
+function renderScreen() {
+    for (let i = 0; i < window.application.timers.length; i++) {
+      clearInterval(window.application.timers[i]);
+    }
+}
+function renderExampleAlink({ container, cls, content }) {
+    const a = {
+        tag: 'a',
+        cls,
+        content,
+    };
+    container.appendChild(templateEngine(a));
+}
+window.application.blocks['example-link'] = renderExampleAlink;
+
+function renderExampleScreenLost() {
+    const app = document.querySelector('.app');
+    window.application.renderBlock('example-div', {
+        container: app,
+        cls: 'overlay',
+        content: '',
+    });
+    const overlay = app.querySelector('.overlay')
+    window.application.renderBlock('example-div', {
+        container: overlay,
+        cls: 'popUpScreen',
+        content: '',
+    });
+    const popUpScreen = app.querySelector('.popUpScreen')
+    window.application.renderBlock('example-img', {
+        container: popUpScreen,
+        cls: 'popUpScreen_img_lost',
+        id: 'loser',
+        src: `./src/js/Img/loser.png`,
+    });
+    window.application.renderBlock('example-div', {
+        container: popUpScreen,
+        cls: 'popUpScreen_result',
+        content: 'Вы проиграли!',
+    });
+    window.application.renderBlock('example-div', {
+        container: popUpScreen,
+        cls: 'popUpScreen_time',
+        content: 'Затраченное время:',
+    });
+    window.application.renderBlock('example-div', {
+        container: popUpScreen,
+        cls: 'popUpScreen_time_counter',
+        content: window.time,
+    });
+    window.application.renderBlock('example-button', {
+        container: popUpScreen,
+        cls: 'head_button',
+        content: 'Начать снова ',
+    });
+
+
+
+}
+window.application.screens['gameLost'] = renderExampleScreenLost;
+function renderExampleScreenWin() {
+    const app = document.querySelector('.app');
+    window.application.renderBlock('example-div', {
+        container: app,
+        cls: 'overlay',
+        content: '',
+    });
+    const overlay = app.querySelector('.overlay')
+    window.application.renderBlock('example-div', {
+        container: overlay,
+        cls: 'popUpScreen',
+        content: '',
+    });
+    const popUpScreen = app.querySelector('.popUpScreen')
+    window.application.renderBlock('example-img', {
+        container: popUpScreen,
+        cls: 'popUpScreen_img_lost',
+        id: 'loser',
+        src: `./src/js/Img/win.png`,
+    });
+    window.application.renderBlock('example-div', {
+        container: popUpScreen,
+        cls: 'popUpScreen_result',
+        content: 'Вы выиграли!',
+    });
+    window.application.renderBlock('example-div', {
+        container: popUpScreen,
+        cls: 'popUpScreen_time',
+        content: 'Затраченное время:',
+    });
+    window.application.renderBlock('example-div', {
+        container: popUpScreen,
+        cls: 'popUpScreen_time_counter',
+        content: window.time,
+    });
+    window.application.renderBlock('example-button', {
+        container: popUpScreen,
+        cls: 'head_button',
+        content: 'Начать снова ',
+    });
+}
+window.application.screens['gameWin'] = renderExampleScreenWin;
