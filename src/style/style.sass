@@ -106,12 +106,59 @@
     flex-wrap: wrap
     padding: 24px
     &_cards_shirt
-        // background-image: url("./img/shirt.jpg")
-        
-        // background-repeat: no-repeat
-        // background-position: center
-        // background-size: cover
         width: 95px
         height: 133px
         background: #E4FBFF
         border-radius: 4px
+.overlay
+    background-color: rgba(1, 0, 0, 0.77)
+    right: 0
+    left: 0
+    position: fixed
+    top: 0
+    bottom: 0
+    z-index: 11
+
+    /*Появление модального окошка с верхнего края экрана*/
+
+    &:target+.popUpScreen
+        transform: translate(-50%, 0)
+        top: 17%
+
+.popUpScreen
+    position: absolute
+    width: 480px
+    height: 459px
+    left: 272px
+    top: 158px
+    background: #C2F5FF
+    border-radius: 12px
+    box-shadow: 0 13px 21px rgba(0,1,0,.19),0 21px 63px rgba(0,1,0,.31)
+    display: flex
+    flex-direction: column
+    align-items: center
+    &_result
+        font-family: 'StratosSkyeng'
+        font-style: normal
+        font-weight: 400
+        font-size: 40px
+        line-height: 48px
+        color: #004980
+        font-feature-settings: 'pnum' on, 'lnum' on
+    &_img_lost
+        left: 0.4%
+        right: 0%
+        top: 0%
+        bottom: 0.4%
+        padding-top: 9px
+    &_time
+        padding-top: 28px
+    &_time_counter
+        padding-top: 10px
+        font-family: 'StratosSkyeng'
+        font-style: normal
+        font-weight: 400
+        font-size: 64px
+        line-height: 72px
+        padding-bottom: 40px
+
