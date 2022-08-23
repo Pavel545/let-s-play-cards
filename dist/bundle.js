@@ -2,6 +2,18 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/style/style.css":
+/*!*****************************!*\
+  !*** ./src/style/style.css ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./src/js/application.ts":
 /*!*******************************!*\
   !*** ./src/js/application.ts ***!
@@ -35,21 +47,25 @@ window.time = '00:00';
 /*!********************************!*\
   !*** ./src/js/block_layout.ts ***!
   \********************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "renderNull": () => (/* binding */ renderNull)
+/* harmony export */ });
+/* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./template */ "./src/js/template.ts");
+/* harmony import */ var _public_shirt_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./public/shirt.jpg */ "./src/js/public/shirt.jpg");
 
-function renderExampleDiv(_a) {
-    var container = _a.container, cls = _a.cls, content = _a.content;
+function renderExampleDiv(container, cls, content) {
     var div = {
         tag: 'div',
         cls: cls,
         content: content,
     };
-    container.appendChild(templateEngine(div));
+    container.appendChild((0,_template__WEBPACK_IMPORTED_MODULE_0__.templateEngine)(div));
 }
 window.application.blocks['example-div'] = renderExampleDiv;
-function renderExampleButtonFalse(_a) {
-    var container = _a.container, cls = _a.cls, content = _a.content, id = _a.id;
+function renderExampleButtonFalse(container, cls, content, id) {
     var div = {
         tag: 'div',
         cls: cls,
@@ -58,74 +74,47 @@ function renderExampleButtonFalse(_a) {
             id: id,
         },
     };
-    container.appendChild(templateEngine(div));
+    container.appendChild((0,_template__WEBPACK_IMPORTED_MODULE_0__.templateEngine)(div));
 }
 window.application.blocks['example-false'] = renderExampleButtonFalse;
-function renderExampleButton(_a) {
-    var container = _a.container, cls = _a.cls, content = _a.content;
+function renderExampleButton(container, cls, content) {
     var button = {
         tag: 'button',
         cls: cls,
         content: content,
     };
-    container.appendChild(templateEngine(button));
+    container.appendChild((0,_template__WEBPACK_IMPORTED_MODULE_0__.templateEngine)(button));
 }
 window.application.blocks['example-button'] = renderExampleButton;
 function renderExampleScreenStart() {
     var app = document.querySelector('.app');
     if (app) {
         app.innerHTML = '';
+        window.application.renderBlock('example-div', app, 'main', '');
     }
-    window.application.renderBlock('example-div', {
-        container: app,
-        cls: 'main',
-        content: '',
-    });
     var main = app === null || app === void 0 ? void 0 : app.querySelector('.main');
-    window.application.renderBlock('example-div', {
-        container: main,
-        cls: 'complexity',
-        content: '',
-    });
+    if (main) {
+        window.application.renderBlock('example-div', main, 'complexity', '');
+    }
     var div = main === null || main === void 0 ? void 0 : main.querySelector('.complexity');
-    window.application.renderBlock('example-div', {
-        container: div,
-        cls: 'complexity_text',
-        content: 'Выбери сложность',
-    });
-    window.application.renderBlock('example-div', {
-        container: div,
-        cls: 'complexity_choice_area',
-        content: '',
-    });
+    if (div) {
+        window.application.renderBlock('example-div', div, 'complexity_text', 'Выбери сложность');
+    }
+    if (div) {
+        window.application.renderBlock('example-div', div, 'complexity_choice_area', '');
+    }
     var complexity_choice_area = div === null || div === void 0 ? void 0 : div.querySelector('.complexity_choice_area');
-    window.application.renderBlock('example-false', {
-        container: complexity_choice_area,
-        cls: ['complexity_choice_button'],
-        content: '1',
-        id: 'easy',
-    });
-    window.application.renderBlock('example-false', {
-        container: complexity_choice_area,
-        cls: ['complexity_choice_button'],
-        content: '2',
-        id: ['average'],
-    });
-    window.application.renderBlock('example-false', {
-        container: complexity_choice_area,
-        cls: ['complexity_choice_button'],
-        content: '3',
-        id: ['difficult'],
-    });
-    window.application.renderBlock('example-button', {
-        container: div,
-        cls: 'complexity_button',
-        content: 'Старт',
-    });
+    if (complexity_choice_area) {
+        window.application.renderBlock('example-false', complexity_choice_area, 'complexity_choice_button', '1', 'easy');
+        window.application.renderBlock('example-false', complexity_choice_area, 'complexity_choice_button', '2', 'average');
+        window.application.renderBlock('example-false', complexity_choice_area, ['complexity_choice_button'], '3', ['difficult']);
+    }
+    if (div) {
+        window.application.renderBlock('example-button', div, 'complexity_button', 'Старт');
+    }
 }
 window.application.screens['example'] = renderExampleScreenStart;
-function renderExampleImg(_a) {
-    var container = _a.container, cls = _a.cls, id = _a.id, src = _a.src;
+function renderExampleImg(container, cls, id, src) {
     var img = {
         tag: 'img',
         cls: cls,
@@ -134,9 +123,10 @@ function renderExampleImg(_a) {
             src: src,
         },
     };
-    container.appendChild(templateEngine(img));
+    container.appendChild((0,_template__WEBPACK_IMPORTED_MODULE_0__.templateEngine)(img));
 }
 window.application.blocks['example-img'] = renderExampleImg;
+
 function renderExampleScreenGameShirt() {
     var _a;
     var app = document.querySelector('.app');
@@ -145,14 +135,11 @@ function renderExampleScreenGameShirt() {
         deck.innerHTML = '';
     }
     var arr = easy();
-    (_a = window.deckT) === null || _a === void 0 ? void 0 : _a.forEach(function (a, index) {
-        window.application.renderBlock('example-img', {
-            container: deck,
-            cls: 'deck_cards_shirt',
-            id: arr[index],
-            src: './src/js/Img/shirt.jpg',
+    if (deck) {
+        (_a = window.deckT) === null || _a === void 0 ? void 0 : _a.forEach(function (_, index) {
+            window.application.renderBlock('example-img', deck, 'deck_cards_shirt', arr[index], _public_shirt_jpg__WEBPACK_IMPORTED_MODULE_1__);
         });
-    });
+    }
 }
 window.application.screens['gameShirt'] = renderExampleScreenGameShirt;
 function renderExampleScreenGameDisplay() {
@@ -160,55 +147,35 @@ function renderExampleScreenGameDisplay() {
     if (app) {
         app.innerHTML = '';
     }
-    window.application.renderBlock('example-div', {
-        container: app,
-        cls: 'startGame',
-        content: '',
-    });
+    if (app) {
+        window.application.renderBlock('example-div', app, 'startGame', '');
+    }
     var main = app === null || app === void 0 ? void 0 : app.querySelector('.startGame');
-    window.application.renderBlock('example-div', {
-        container: main,
-        cls: 'head',
-        content: '',
-    });
+    if (main) {
+        window.application.renderBlock('example-div', main, 'head', '');
+    }
     var head = main === null || main === void 0 ? void 0 : main.querySelector('.head');
-    window.application.renderBlock('example-div', {
-        container: head,
-        cls: 'head_timer',
-        content: '',
-    });
+    if (head) {
+        window.application.renderBlock('example-div', head, 'head_timer', '');
+    }
     var timer = main === null || main === void 0 ? void 0 : main.querySelector('.head_timer');
-    window.application.renderBlock('example-div', {
-        container: timer,
-        cls: 'head_timer_box',
-        content: '',
-    });
+    if (timer) {
+        window.application.renderBlock('example-div', timer, 'head_timer_box', '');
+    }
     var box = main === null || main === void 0 ? void 0 : main.querySelector('.head_timer_box');
-    window.application.renderBlock('example-div', {
-        container: box,
-        cls: 'head_timer_type',
-        content: 'min',
-    });
-    window.application.renderBlock('example-div', {
-        container: box,
-        cls: 'head_timer_type',
-        content: 'sek',
-    });
-    window.application.renderBlock('example-div', {
-        container: timer,
-        cls: 'head_timer_counter',
-        content: '00.00',
-    });
-    window.application.renderBlock('example-button', {
-        container: head,
-        cls: 'head_button',
-        content: 'Начать заново ',
-    });
-    window.application.renderBlock('example-div', {
-        container: main,
-        cls: 'deck',
-        content: '',
-    });
+    if (box) {
+        window.application.renderBlock('example-div', box, 'head_timer_type', 'min');
+        window.application.renderBlock('example-div', box, 'head_timer_type', 'sek');
+    }
+    if (timer) {
+        window.application.renderBlock('example-div', timer, 'head_timer_counter', '00.00');
+    }
+    if (head) {
+        window.application.renderBlock('example-button', head, 'head_button', 'Начать заново ');
+    }
+    if (main) {
+        window.application.renderBlock('example-div', main, 'deck', '');
+    }
     var deck = main === null || main === void 0 ? void 0 : main.querySelector('.deck');
 }
 window.application.screens['gameDisplay'] = renderExampleScreenGameDisplay;
@@ -220,12 +187,9 @@ function renderExampleComplexity() {
     arr = complexityS(window.complexity);
     console.log(arr);
     arr.forEach(function (element, index) {
-        window.application.renderBlock('example-img', {
-            container: deck,
-            cls: 'deck_cards_shirt',
-            id: arr[index],
-            src: "./src/js/Img/".concat(element, ".png"),
-        });
+        if (deck) {
+            window.application.renderBlock('example-img', deck, 'deck_cards_shirt', arr[index], "./src/js/Img/".concat(element, ".png"));
+        }
     });
     window.deckT = deck === null || deck === void 0 ? void 0 : deck.querySelectorAll('.deck_cards_shirt');
 }
@@ -275,98 +239,51 @@ function renderNull() {
         clearInterval(window.application.timers[i]);
     }
 }
-function renderExampleAlink(_a) {
-    var container = _a.container, cls = _a.cls, content = _a.content;
+function renderExampleAlink(container, cls, content) {
     var a = {
         tag: 'a',
         cls: cls,
         content: content,
     };
-    container.appendChild(templateEngine(a));
+    container.appendChild((0,_template__WEBPACK_IMPORTED_MODULE_0__.templateEngine)(a));
 }
 window.application.blocks['example-link'] = renderExampleAlink;
 function renderExampleScreenLost() {
     var app = document.querySelector('.app');
-    window.application.renderBlock('example-div', {
-        container: app,
-        cls: 'overlay',
-        content: '',
-    });
+    if (app) {
+        window.application.renderBlock('example-div', app, 'overlay', '');
+    }
     var overlay = app === null || app === void 0 ? void 0 : app.querySelector('.overlay');
-    window.application.renderBlock('example-div', {
-        container: overlay,
-        cls: 'popUpScreen',
-        content: '',
-    });
+    if (overlay) {
+        window.application.renderBlock('example-div', overlay, 'popUpScreen', '');
+    }
     var popUpScreen = app === null || app === void 0 ? void 0 : app.querySelector('.popUpScreen');
-    window.application.renderBlock('example-img', {
-        container: popUpScreen,
-        cls: 'popUpScreen_img_lost',
-        id: 'loser',
-        src: "./src/js/Img/loser.png",
-    });
-    window.application.renderBlock('example-div', {
-        container: popUpScreen,
-        cls: 'popUpScreen_result',
-        content: 'Вы проиграли!',
-    });
-    window.application.renderBlock('example-div', {
-        container: popUpScreen,
-        cls: 'popUpScreen_time',
-        content: 'Затраченное время:',
-    });
-    window.application.renderBlock('example-div', {
-        container: popUpScreen,
-        cls: 'popUpScreen_time_counter',
-        content: window.time,
-    });
-    window.application.renderBlock('example-button', {
-        container: popUpScreen,
-        cls: 'head_button',
-        content: 'Начать снова ',
-    });
+    if (popUpScreen) {
+        window.application.renderBlock('example-img', popUpScreen, 'popUpScreen_img_lost', 'loser', "./src/js/Img/loser.png");
+        window.application.renderBlock('example-div', popUpScreen, 'popUpScreen_result', 'Вы проиграли!');
+        window.application.renderBlock('example-div', popUpScreen, 'popUpScreen_time', 'Затраченное время:');
+        window.application.renderBlock('example-div', popUpScreen, 'popUpScreen_time_counter');
+        window.application.renderBlock('example-button', popUpScreen, 'head_button', 'Начать снова ');
+    }
 }
 window.application.screens['gameLost'] = renderExampleScreenLost;
 function renderExampleScreenWin() {
     var app = document.querySelector('.app');
-    window.application.renderBlock('example-div', {
-        container: app,
-        cls: 'overlay',
-        content: '',
-    });
+    if (app) {
+        window.application.renderBlock('example-div', app, 'overlay', '');
+    }
     var overlay = app === null || app === void 0 ? void 0 : app.querySelector('.overlay');
-    window.application.renderBlock('example-div', {
-        container: overlay,
-        cls: 'popUpScreen',
-        content: '',
-    });
+    if (overlay) {
+        window.application.renderBlock('example-div', overlay, 'popUpScreen', '');
+    }
     var popUpScreen = app === null || app === void 0 ? void 0 : app.querySelector('.popUpScreen');
-    window.application.renderBlock('example-img', {
-        container: popUpScreen,
-        cls: 'popUpScreen_img_lost',
-        id: 'loser',
-        src: "./src/js/Img/win.png",
-    });
-    window.application.renderBlock('example-div', {
-        container: popUpScreen,
-        cls: 'popUpScreen_result',
-        content: 'Вы выиграли!',
-    });
-    window.application.renderBlock('example-div', {
-        container: popUpScreen,
-        cls: 'popUpScreen_time',
-        content: 'Затраченное время:',
-    });
-    window.application.renderBlock('example-div', {
-        container: popUpScreen,
-        cls: 'popUpScreen_time_counter',
-        content: window.time,
-    });
-    window.application.renderBlock('example-button', {
-        container: popUpScreen,
-        cls: 'head_button',
-        content: 'Начать снова ',
-    });
+    if (popUpScreen) {
+        window.application.renderBlock('example-img', popUpScreen, 'popUpScreen_img_lost', 'loser', "./src/js/Img/win.png");
+        window.application.renderBlock('example-div', popUpScreen, 'popUpScreen_result', 'Вы выиграли!');
+        window.application.renderBlock('example-div', popUpScreen, 'popUpScreen_time', 'Затраченное время:');
+        window.application.renderBlock('example-div', popUpScreen, 'popUpScreen_time_counter');
+        window.application.renderBlock('example-button', popUpScreen, 'head_button', 'Начать снова ');
+    }
 }
 window.application.screens['gameWin'] = renderExampleScreenWin;
 
@@ -377,14 +294,19 @@ window.application.screens['gameWin'] = renderExampleScreenWin;
 /*!********************************!*\
   !*** ./src/js/game_process.ts ***!
   \********************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _block_layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./block_layout */ "./src/js/block_layout.ts");
+var main = document.createElement('div');
+main.className = 'app';
+document.body.append(main);
 var app = document.querySelector('.app');
 var sec = 0;
 var min = 0;
+
 function newGame() {
-    renderNull();
+    (0,_block_layout__WEBPACK_IMPORTED_MODULE_0__.renderNull)();
     sec = 0;
     min = 0;
     window.application.renderScreen('example');
@@ -454,9 +376,11 @@ function progressGame() {
                     previous.id[0] != window.deckT[index].id[0] &&
                     previous != '') {
                     var head_timer_counter = app === null || app === void 0 ? void 0 : app.querySelector('.head_timer_counter');
+                    if (head_timer_counter) {
+                    }
                     window.time = head_timer_counter === null || head_timer_counter === void 0 ? void 0 : head_timer_counter.textContent;
                     loser();
-                    renderNull();
+                    (0,_block_layout__WEBPACK_IMPORTED_MODULE_0__.renderNull)();
                     return;
                 }
                 previous = window.deckT[index];
@@ -469,21 +393,21 @@ function progressGame() {
                 var head_timer_counter = app === null || app === void 0 ? void 0 : app.querySelector('.head_timer_counter');
                 window.time = head_timer_counter === null || head_timer_counter === void 0 ? void 0 : head_timer_counter.textContent;
                 Win();
-                renderNull();
+                (0,_block_layout__WEBPACK_IMPORTED_MODULE_0__.renderNull)();
                 return;
             }
             if (countersWin === 12 && window.complexity === 'average') {
                 var head_timer_counter = app === null || app === void 0 ? void 0 : app.querySelector('.head_timer_counter');
                 window.time = head_timer_counter === null || head_timer_counter === void 0 ? void 0 : head_timer_counter.textContent;
                 Win();
-                renderNull();
+                (0,_block_layout__WEBPACK_IMPORTED_MODULE_0__.renderNull)();
                 return;
             }
             if (countersWin === 18 && window.complexity === 'difficult') {
                 var head_timer_counter = app === null || app === void 0 ? void 0 : app.querySelector('.head_timer_counter');
                 window.time = head_timer_counter === null || head_timer_counter === void 0 ? void 0 : head_timer_counter.textContent;
                 Win();
-                renderNull();
+                (0,_block_layout__WEBPACK_IMPORTED_MODULE_0__.renderNull)();
                 return;
             }
         });
@@ -497,7 +421,6 @@ function loser() {
     butter === null || butter === void 0 ? void 0 : butter.addEventListener('click', function () {
         newGame();
         window.time = '00:00';
-        return;
     });
 }
 function Win() {
@@ -518,9 +441,12 @@ function Win() {
 /*!****************************!*\
   !*** ./src/js/template.ts ***!
   \****************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "templateEngine": () => (/* binding */ templateEngine)
+/* harmony export */ });
 function templateEngine(block) {
     if (block === undefined || block === null || block === false) {
         return document.createTextNode('');
@@ -554,6 +480,16 @@ function templateEngine(block) {
     return result;
 }
 
+
+/***/ }),
+
+/***/ "./src/js/public/shirt.jpg":
+/*!*********************************!*\
+  !*** ./src/js/public/shirt.jpg ***!
+  \*********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "8c27630cd3c577f1634d.jpg";
 
 /***/ })
 
@@ -608,6 +544,18 @@ function templateEngine(block) {
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -624,6 +572,26 @@ function templateEngine(block) {
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
@@ -632,14 +600,13 @@ var __webpack_exports__ = {};
   !*** ./src/js/index.ts ***!
   \*************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./application */ "./src/js/application.ts");
-/* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_application__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./template */ "./src/js/template.ts");
-/* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_template__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _block_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block_layout */ "./src/js/block_layout.ts");
-/* harmony import */ var _block_layout__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_block_layout__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _game_process__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./game_process */ "./src/js/game_process.ts");
-/* harmony import */ var _game_process__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_game_process__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _src_style_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../src/style/style.css */ "./src/style/style.css");
+/* harmony import */ var _application_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./application.ts */ "./src/js/application.ts");
+/* harmony import */ var _application_ts__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_application_ts__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _template_ts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./template.ts */ "./src/js/template.ts");
+/* harmony import */ var _block_layout_ts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block_layout.ts */ "./src/js/block_layout.ts");
+/* harmony import */ var _game_process_ts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./game_process.ts */ "./src/js/game_process.ts");
+
 
 
 

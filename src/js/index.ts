@@ -1,5 +1,7 @@
-import "./application"
-import "./template"
+import "/src/style/style.css"
 
-import "./block_layout"
-import "./game_process"
+import "./application.ts"
+import "./template.ts"
+
+import "./block_layout.ts"
+import "./game_process.ts"

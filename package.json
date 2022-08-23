@@ -8,9 +8,10 @@
         "start": "http-server -p 3004",
         "lint:js": "eslint ./src/**/*.js",
         "lint:css": "stylelint ./src/**/*.css",
-        "lint.ts":"tsc --noEmit",
+        "lint.ts": "tsc --noEmit",
         "lint": "",
         "prepare": "husky install",
+        "build": "webpack",
         "format": "prettier --write ."
     },
     "repository": {
@@ -35,6 +36,7 @@
         "husky": "^8.0.1",
         "mini-css-extract-plugin": "^2.6.1",
         "prettier": "^2.7.1",
+        "style-loader": "^3.3.1",
         "stylelint": "^14.9.1",
         "stylelint-config-prettier": "^9.0.3",
         "stylelint-config-standard": "^26.0.0",

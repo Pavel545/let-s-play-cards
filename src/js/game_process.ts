@@ -1,6 +1,10 @@
+const main = document.createElement('div')
+main.className = 'app'
+document.body.append(main)
 const app = document.querySelector('.app');
 let sec = 0;
-let min = 0;
+let min = 0; 
+import {renderNull} from './block_layout';
 function newGame() {
     renderNull();
     sec = 0;
@@ -86,6 +90,9 @@ function progressGame() {
                     const head_timer_counter = app?.querySelector(
                         '.head_timer_counter'
                     );
+                    if (head_timer_counter) {
+                        
+                    }
                     window.time = head_timer_counter?.textContent;
                     loser();
                     renderNull();
@@ -137,7 +144,7 @@ function loser() {
     butter?.addEventListener('click', () => {
         newGame();
         window.time = '00:00';
-        return;
+        
     });
 }
 function Win() {

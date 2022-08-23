@@ -1,6 +1,14 @@
+
+interface obj {
+    (name: string,
+    container: Element,
+    cls: string|string[],
+    content?: string,
+    attrs?:string|string[])
+}
 interface Window {
     complexity: string;
-    application: { screens; blocks;renderScreen; renderBlock; timers};
+    application: { screens; blocks;renderScreen; renderBlock:obj; timers};
     deckID: number[];
     time: string|null|undefined;
     deckT:NodeListOf<Element>|undefined|null;
@@ -12,7 +20,7 @@ window.application = {
     renderScreen: function (screenName) {
         window.application.screens[screenName]();
     },
-    renderBlock: function (blockName, container, cls, content, attrs) {
+    renderBlock: function (blockName,container, cls, content, attrs) {
         window.application.blocks[blockName](container, cls, content, attrs);
     },
     timers: [],
